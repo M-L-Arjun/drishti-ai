@@ -4,6 +4,7 @@
 [![Privacy](https://img.shields.io/badge/Architecture-100%25_On--Device-green?style=for-the-badge)](#privacy--air-gapped-security)
 [![Offline](https://img.shields.io/badge/Cloud_Dependency-Zero_Calls-blue?style=for-the-badge)](#the-airplane-mode-proof)
 [![Multilingual](https://img.shields.io/badge/Languages-7_Indian_Vernaculars-purple?style=for-the-badge)](#pan-indian-multilingual-vocal-engine)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FM-L-Arjun%2Fdrishti-ai)
 
 > **"Vision shouldn't wait for a cloud round-trip, compromise your privacy, or stop working when connectivity drops."**
 
