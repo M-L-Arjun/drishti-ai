@@ -1,0 +1,13 @@
+{
+  "name": "drishti-ai",
+  "version": "1.0.0",
+  "description": "On-Device AI Sensory Companion for the Visually Impaired",
+  "type": "module",
+  "scripts": {
+    "test": "node test/medicine-parser.test.js && node test/model-tier.test.js && node test/benchmark.test.js && node test/languages.test.js",
+    "start": "npx serve ."
+  },
+  "keywords": ["ai", "accessibility", "edge-ai", "on-device", "npu"],
+  "author": "Drishti Team",
+  "license": "MIT"
+}

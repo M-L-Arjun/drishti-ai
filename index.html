@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Drishti AI — On-Device Sensory Companion</title>
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- App Header & Live Status Indicators -->
+  <header>
+    <div class="brand">
+      <h1>DRISHTI</h1>
+      <span class="sub">On-Device AI</span>
+    </div>
+
+    <div class="status-badges">
+      <!-- Multilingual Selector (Shortcut: L) -->
+      <button id="langBadge" class="badge badge-lang" title="Press 'L' to cycle Indian Languages">
+        🌐 <span id="langName">తెలుగు / EN</span>
+      </button>
+
+      <!-- Tier Selector Button (Shortcut: T) -->
+      <button id="tierBadge" class="badge badge-tier" title="Press 'T' to toggle Tier">
+        <span id="tierIcon">⚡</span> <span id="tierName">Standard (NPU)</span>
+      </button>
+
+      <!-- Airplane Mode Stage Proof Button (Shortcut: A) -->
+      <button id="airplaneBadge" class="badge badge-airplane" title="Press 'A' for Stage Proof">
+        ✈️ <span id="airplaneStatus">Airplane: OFF</span>
+      </button>
+
+      <!-- 100% Air-Gapped Indicator -->
+      <span class="badge badge-airgap">🔒 Air-Gapped</span>
+    </div>
+  </header>
+
+  <!-- Interactive Language Selector Options Bar -->
+  <nav class="lang-selector-bar" id="langSelectorBar" aria-label="Select Vocal Language">
+    <button class="lang-pill" data-lang="te" id="pill-te" aria-label="Select Telugu language">🏛️ తెలుగు</button>
+    <button class="lang-pill" data-lang="hi" id="pill-hi" aria-label="Select Hindi language">🇮🇳 हिन्दी</button>
+    <button class="lang-pill" data-lang="en" id="pill-en" aria-label="Select English language">🇮🇳 English</button>
+    <button class="lang-pill" data-lang="ta" id="pill-ta" aria-label="Select Tamil language">🇮🇳 தமிழ்</button>
+    <button class="lang-pill" data-lang="kn" id="pill-kn" aria-label="Select Kannada language">🇮🇳 ಕನ್ನಡ</button>
+    <button class="lang-pill" data-lang="mr" id="pill-mr" aria-label="Select Marathi language">🇮🇳 मराठी</button>
+    <button class="lang-pill" data-lang="bn" id="pill-bn" aria-label="Select Bengali language">🇮🇳 বাংলা</button>
+  </nav>
+
+  <!-- Main Sensory Viewport -->
+  <main>
+    <section class="viewport-card" aria-label="Visual and Spatial Feed">
+      <video id="cameraVideo" class="camera-preview" autoplay playsinline muted></video>
+      
+      <div class="overlay-status">
+        <div id="speechReadout" class="speech-readout" role="status" aria-live="polite">
+          Ready. Tap an action below or use keyboard shortcuts (1-4).
+        </div>
+        
+        <div class="spatial-radar">
+          <span id="activeModeLabel">Mode: Standby</span>
+          <span id="latencyLiveLabel">Latency: -- ms</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eyes-Free Accessible Action Grid -->
+    <section class="action-grid" aria-label="Sensory Action Buttons">
+      <button id="btnScene" class="action-btn" aria-label="Start Spatial Scene Guidance">
+        <span class="btn-icon">🧭</span>
+        <span id="lblBtnScene">Spatial Guidance</span>
+        <span class="shortcut-tag">Key [1] / Double-Tap</span>
+      </button>
+
+      <button id="btnMedicine" class="action-btn" aria-label="Scan Medicine and Packaging">
+        <span class="btn-icon">💊</span>
+        <span id="lblBtnMed">Medicine Smart-Scan</span>
+        <span class="shortcut-tag">Key [2] / Swipe Up</span>
+      </button>
+
+      <button id="btnBenchmark" class="action-btn" aria-label="Run Live Latency Benchmark">
+        <span class="btn-icon">⏱️</span>
+        <span id="lblBtnBench">Latency Benchmark</span>
+        <span class="shortcut-tag">Key [3] / Key [B]</span>
+      </button>
+
+      <button id="btnFaces" class="action-btn" aria-label="Who's Near Me Face Scan">
+        <span class="btn-icon">👤</span>
+        <span id="lblBtnFaces">"Who's Near Me"</span>
+        <span class="shortcut-tag">Key [4] / Key [F]</span>
+      </button>
+    </section>
+
+    <!-- Priority 3: Live Unsimulated Latency Benchmark HUD -->
+    <section id="benchmarkSection" class="benchmark-card" aria-label="Latency Benchmark Results">
+      <h2>
+        <span>Live Unsimulated Benchmark</span>
+        <button id="btnReplayFallback" class="badge" style="background:#222; color:#ccc;" title="Replay Verified Run (Key R)">
+          🔄 Replay Cached Run [R]
+        </button>
+      </h2>
+
+      <div class="benchmark-split">
+        <div class="hud-panel">
+          <div class="hud-label" id="onDeviceHudLabel">On-Device (Standard NPU)</div>
+          <div id="onDeviceMsValue" class="hud-value on-device">-- ms</div>
+          <div class="hud-note">Zero-Cloud / 100% Offline</div>
+        </div>
+
+        <div class="hud-panel">
+          <div class="hud-label">Cloud Vision API</div>
+          <div id="cloudMsValue" class="hud-value cloud">-- ms</div>
+          <div id="cloudStatusNote" class="hud-note">Live Network Round-Trip</div>
+        </div>
+      </div>
+
+      <div id="benchmarkSummary" class="benchmark-summary">
+        Execute a live run [Key 3] to measure real on-device execution vs. real cloud network round-trip.
+      </div>
+    </section>
+  </main>
+
+  <!-- Stage Demo Keyboard Shortcuts Help -->
+  <footer>
+    Stage Demo Shortcuts: <kbd>1</kbd> Spatial | <kbd>2</kbd> Medicine | <kbd>3</kbd> Benchmark | <kbd>4</kbd> Faces | <kbd>L</kbd> Languages | <kbd>T</kbd> Toggle Tier | <kbd>A</kbd> Airplane Mode | <kbd>Space</kbd> Silence
+  </footer>
+
+  <!-- Application Bootstrap -->
+  <script type="module">
+    import { CONFIG } from './src/config.js';
+    import { SpeechEngine } from './src/core/speech-engine.js';
+    import { HapticEngine } from './src/core/haptic-engine.js';
+    import { CameraStream } from './src/core/camera-stream.js';
+    import { ModelTierManager } from './src/core/model-tier-manager.js';
+    import { SceneNarrator } from './src/modules/scene-narrator.js';
+    import { MedicineScanner } from './src/modules/medicine-scanner.js';
+    import { LatencyBenchmark } from './src/modules/latency-benchmark.js';
+    import { FaceRecognizer } from './src/modules/face-recognizer.js';
+    import { GestureListener } from './src/input/gesture-listener.js';
+    import { KeyboardControls } from './src/input/keyboard-controls.js';
+
+    // Core Instances
+    const speech = new SpeechEngine();
+    const haptics = new HapticEngine();
+    const cameraVideo = document.getElementById('cameraVideo');
+    const camera = new CameraStream(cameraVideo);
+    const tierManager = new ModelTierManager();
+
+    // Module Instances
+    const sceneNarrator = new SceneNarrator(camera, speech, haptics, tierManager);
+    const medicineScanner = new MedicineScanner(camera, speech, haptics);
+    const latencyBenchmark = new LatencyBenchmark(camera, tierManager);
+    const faceRecognizer = new FaceRecognizer(camera, speech, haptics);
+
+    // DOM Elements
+    const speechReadout = document.getElementById('speechReadout');
+    const activeModeLabel = document.getElementById('activeModeLabel');
+    const latencyLiveLabel = document.getElementById('latencyLiveLabel');
+    const tierBadge = document.getElementById('tierBadge');
+    const tierName = document.getElementById('tierName');
+    const airplaneBadge = document.getElementById('airplaneBadge');
+    const airplaneStatus = document.getElementById('airplaneStatus');
+    const langBadge = document.getElementById('langBadge');
+    const langName = document.getElementById('langName');
+    const onDeviceHudLabel = document.getElementById('onDeviceHudLabel');
+    const onDeviceMsValue = document.getElementById('onDeviceMsValue');
+    const cloudMsValue = document.getElementById('cloudMsValue');
+    const cloudStatusNote = document.getElementById('cloudStatusNote');
+    const benchmarkSummary = document.getElementById('benchmarkSummary');
+
+    let isAirplaneModeActive = false;
+
+    // Multilingual Strategy (Telugu, Hindi, English, Tamil, Kannada, Marathi, Bengali)
+    const AVAILABLE_LANGUAGES = ['te', 'hi', 'en', 'ta', 'kn', 'mr', 'bn'];
+    let currentLangIndex = 0; // Highlight Telugu for Hyderabad City Battle
+
+    function selectLanguage(langKey, speakConfirmation = true) {
+      if (!AVAILABLE_LANGUAGES.includes(langKey)) return;
+      currentLangIndex = AVAILABLE_LANGUAGES.indexOf(langKey);
+      const langObj = CONFIG.LANGUAGES[langKey];
+      speech.setLanguage(langKey);
+
+      // Update active pill button state
+      document.querySelectorAll('.lang-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.dataset.lang === langKey);
+      });
+
+      langName.textContent = `${langObj.flag} ${langObj.native}`;
+
+      // Update all button labels to the chosen language
+      const locObj = CONFIG.LOCALIZED_STRINGS[langKey]?.native || CONFIG.LOCALIZED_STRINGS[langKey] || CONFIG.LOCALIZED_STRINGS['en'];
+      const locEn = CONFIG.LOCALIZED_STRINGS['en'];
+
+      const sceneText = locObj.btnScene || locEn.btnScene;
+      const medText = locObj.btnMed || locEn.btnMed;
+      const benchText = locObj.btnBench || locEn.btnBench;
+      const facesText = locObj.btnFaces || locEn.btnFaces;
+
+      const lblScene = document.getElementById('lblBtnScene');
+      const lblMed = document.getElementById('lblBtnMed');
+      const lblBench = document.getElementById('lblBtnBench');
+      const lblFaces = document.getElementById('lblBtnFaces');
+
+      if (lblScene) lblScene.textContent = sceneText;
+      if (lblMed) lblMed.textContent = medText;
+      if (lblBench) lblBench.textContent = benchText;
+      if (lblFaces) lblFaces.textContent = facesText;
+
+      document.getElementById('btnScene')?.setAttribute('aria-label', sceneText);
+      document.getElementById('btnMedicine')?.setAttribute('aria-label', medText);
+      document.getElementById('btnBenchmark')?.setAttribute('aria-label', benchText);
+      document.getElementById('btnFaces')?.setAttribute('aria-label', facesText);
+
+      const locReady = speech.getLocalized('ready');
+      updateStatus(locReady.display);
+
+      if (speakConfirmation) {
+        haptics.modeChange();
+        speech.speakKey('langSelected', 2);
+      }
+    }
+
+    function cycleLanguage() {
+      const nextIndex = (currentLangIndex + 1) % AVAILABLE_LANGUAGES.length;
+      selectLanguage(AVAILABLE_LANGUAGES[nextIndex], true);
+    }
+
+    // Attach Language Pill clicks
+    document.querySelectorAll('.lang-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        selectLanguage(pill.dataset.lang, true);
+      });
+    });
+
+    // Set initial language (Telugu default for Hyderabad Battle)
+    selectLanguage(AVAILABLE_LANGUAGES[currentLangIndex], false);
+
+    // Update Readout & Haptics
+    function updateStatus(text, modeName = null) {
+      speechReadout.textContent = text;
+      if (modeName) activeModeLabel.textContent = `Mode: ${modeName}`;
+    }
+
+    // Tier Display Updater
+    function updateTierDisplay() {
+      const tier = tierManager.getTier();
+      tierName.textContent = tier.id === 'standard' ? 'Standard (NPU)' : 'Lite (Edge)';
+      onDeviceHudLabel.textContent = `On-Device (${tier.id === 'standard' ? 'Standard' : 'Lite'})`;
+      haptics.tapAck();
+    }
+    tierManager.onTierChange(updateTierDisplay);
+    updateTierDisplay();
+
+    // Start Camera Feed
+    camera.start().then(started => {
+      if (started) {
+        updateStatus("Camera feed active. Ready for eyes-free navigation.");
+      } else {
+        updateStatus("Camera simulated/fallback mode. Ready for testing.");
+      }
+    });
+
+    // 1. Scene Guidance Action
+    function triggerSceneGuidance() {
+      if (sceneNarrator.isRunning) {
+        sceneNarrator.stop();
+        document.getElementById('btnScene').classList.remove('active');
+        const loc = speech.speakKey('navPaused', 1);
+        updateStatus(loc.display, "Standby");
+      } else {
+        sceneNarrator.start();
+        document.getElementById('btnScene').classList.add('active');
+        const loc = speech.getLocalized('navActive');
+        updateStatus(loc.display, "Spatial Guidance");
+      }
+      haptics.modeChange();
+    }
+
+    // 2. Medicine Smart-Scan Action
+    async function triggerMedicineScan() {
+      sceneNarrator.stop();
+      document.getElementById('btnScene').classList.remove('active');
+      const locScanning = speech.getLocalized('medScanning');
+      updateStatus(locScanning.display, "Medicine Scan");
+      
+      const result = await medicineScanner.scan();
+      if (result) {
+        latencyLiveLabel.textContent = `Latency: ${medicineScanner.getMeasuredLatency()} ms (NPU OCR)`;
+        const locExp = speech.getLocalized('medExpiry');
+        updateStatus(`${result.brandName || 'Medicine'} | ${locExp.display}: ${result.expiry || 'N/A'} | ${result.dosage || ''}`);
+      }
+    }
+
+    // 3. Live Latency Benchmark Action (Unsimulated)
+    async function triggerBenchmark() {
+      const locStart = speech.speakKey('benchmarkStart', 1);
+      updateStatus(locStart.display, "Benchmark");
+      haptics.tapAck();
+      
+      onDeviceMsValue.textContent = "running...";
+      cloudMsValue.textContent = "measuring...";
+      cloudStatusNote.textContent = "Live HTTP POST in flight...";
+
+      const res = await latencyBenchmark.runBenchmark();
+      
+      onDeviceMsValue.textContent = `${res.onDeviceMs} ms`;
+      if (res.cloudStatus === 'SUCCESS') {
+        cloudMsValue.textContent = `${res.cloudMs} ms`;
+        cloudStatusNote.textContent = "Live Network Round-Trip Complete";
+        benchmarkSummary.textContent = `Measured Live: On-Device is ${res.speedupFactor} faster than Cloud Vision API while running 100% offline.`;
+      } else {
+        cloudMsValue.textContent = "FAILED";
+        cloudStatusNote.textContent = res.cloudStatus;
+        benchmarkSummary.textContent = `Demonstrated: Cloud connection failed/blocked (${res.cloudStatus}), while on-device ran reliably in ${res.onDeviceMs} ms.`;
+      }
+
+      speech.speakKey('benchmarkResult', 2, true, { ms: res.onDeviceMs });
+    }
+
+    // 4. "Who's Near Me" Face Scan Action
+    function triggerFaceScan() {
+      const locScanning = speech.getLocalized('contactScanning');
+      updateStatus(locScanning.display, "Who's Near Me");
+      haptics.tapAck();
+      const match = faceRecognizer.scanForFaces();
+      if (match) {
+        updateStatus(`Matched: ${match.contact.name} (${Math.round(match.similarity * 100)}% confidence).`);
+      } else {
+        updateStatus(locScanning.display);
+        speech.speakKey('contactScanning', 1);
+      }
+    }
+
+    // Toggle Tier Shortcut Handler
+    function handleToggleTier() {
+      const newTier = tierManager.toggleTier();
+      const locKey = newTier.id === 'standard' ? 'tierStandard' : 'tierLite';
+      const loc = speech.speakKey(locKey, 1);
+      updateStatus(loc.display);
+    }
+
+    // Airplane Mode Stage Proof Handler (Beat 2)
+    function handleToggleAirplaneMode() {
+      isAirplaneModeActive = !isAirplaneModeActive;
+      if (isAirplaneModeActive) {
+        airplaneBadge.classList.add('active');
+        airplaneStatus.textContent = "Airplane: ON (Air-Gapped)";
+        haptics.airplaneModeToggled();
+        const loc = speech.speakKey('airplaneActive', 2);
+        updateStatus(loc.display);
+      } else {
+        airplaneBadge.classList.remove('active');
+        airplaneStatus.textContent = "Airplane: OFF";
+        haptics.tapAck();
+        const loc = speech.speakKey('airplaneOff', 2);
+        updateStatus(loc.display);
+      }
+    }
+
+    // Cached Replay Fallback (Key R)
+    function handleCachedReplay() {
+      const cached = latencyBenchmark.loadCachedRun();
+      if (cached) {
+        onDeviceMsValue.textContent = `${cached.onDeviceMs} ms`;
+        cloudMsValue.textContent = `${cached.cloudMs} ms`;
+        cloudStatusNote.textContent = "[Verified Cached Stage Fallback]";
+        benchmarkSummary.textContent = `[Cached Run]: On-Device ran ${cached.speedupFactor} faster than Cloud round-trip.`;
+        const loc = speech.speakKey('cachedReplay', 1);
+        updateStatus(loc.display);
+      } else {
+        updateStatus("No cached benchmark run found. Run a live benchmark first.");
+      }
+    }
+
+    // Attach UI Button Clicks
+    document.getElementById('btnScene').addEventListener('click', triggerSceneGuidance);
+    document.getElementById('btnMedicine').addEventListener('click', triggerMedicineScan);
+    document.getElementById('btnBenchmark').addEventListener('click', triggerBenchmark);
+    document.getElementById('btnFaces').addEventListener('click', triggerFaceScan);
+    document.getElementById('tierBadge').addEventListener('click', handleToggleTier);
+    document.getElementById('airplaneBadge').addEventListener('click', handleToggleAirplaneMode);
+    document.getElementById('langBadge').addEventListener('click', cycleLanguage);
+    document.getElementById('btnReplayFallback').addEventListener('click', handleCachedReplay);
+
+    // Initialize Gesture Listener (Back-tap, screen double-tap)
+    new GestureListener({
+      onDoubleTap: triggerSceneGuidance,
+      onBackTap: triggerSceneGuidance,
+      onSwipeUp: triggerMedicineScan,
+      onSwipeRight: triggerFaceScan
+    });
+
+    // Initialize Keyboard Controls (1-4, T, A, L, R, Space)
+    new KeyboardControls({
+      onSceneNarration: triggerSceneGuidance,
+      onMedicineScan: triggerMedicineScan,
+      onLatencyBenchmark: triggerBenchmark,
+      onFaceScan: triggerFaceScan,
+      onToggleTier: handleToggleTier,
+      onToggleAirplaneMode: handleToggleAirplaneMode,
+      onCycleLanguage: cycleLanguage,
+      onCachedReplay: handleCachedReplay,
+      onSilence: () => {
+        speech.stop();
+        haptics.cancel();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Drishti AI",
+  "short_name": "Drishti",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "On-device, zero-cloud sensory companion for the visually impaired.",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./styles/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
