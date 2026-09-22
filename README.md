@@ -118,6 +118,13 @@ drishti/
 
 ---
 
+## 🎯 Championship Pitch Deck
+The live interactive 8-slide presentation deck is hosted directly with the app:
+* **Interactive Slide Deck:** [https://drishti-seven-mu.vercel.app/pitch](https://drishti-seven-mu.vercel.app/pitch)
+* **Controls:** <kbd>←</kbd> / <kbd>→</kbd> navigate slides • <kbd>P</kbd> toggle presenter notes • <kbd>F</kbd> toggle fullscreen • built-in 3:00 countdown timer.
+
+---
+
 ## 🚦 Local Setup & Testing
 
 ### Prerequisites
@@ -127,8 +134,8 @@ drishti/
 ### Installation & Run
 ```bash
 # Clone the repository
-git clone https://github.com/M-L-Arjun/drishti.git
-cd drishti
+git clone https://github.com/M-L-Arjun/drishti-ai.git
+cd drishti-ai
 
 # Run automated tests (111 unit tests across all modules)
 npm test
@@ -143,4 +150,5 @@ npm start
 ## 👥 Hackathon Team
 - **Built for:** iQOO Hackathon 2026 (Hyderabad City Battle)
 - **Theme Track:** Phone-First, On-Device AI
-- **Repository:** [https://github.com/M-L-Arjun/drishti](https://github.com/M-L-Arjun/drishti)
+- **Repository:** [https://github.com/M-L-Arjun/drishti-ai](https://github.com/M-L-Arjun/drishti-ai)
+- **Live Deployment:** [https://drishti-seven-mu.vercel.app](https://drishti-seven-mu.vercel.app)
