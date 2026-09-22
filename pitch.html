@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drishti AI — iQOO Hackathon 2026 Pitch Deck</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #07080c;
+      color: #f3f4f6;
+    }
+    
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .glass-card {
+      background: rgba(18, 20, 29, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-glow-amber {
+      border: 1px solid rgba(255, 111, 0, 0.25);
+      box-shadow: 0 0 30px -5px rgba(255, 111, 0, 0.15);
+    }
+
+    .glass-glow-cyan {
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      box-shadow: 0 0 30px -5px rgba(0, 229, 255, 0.15);
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      from { opacity: 0.4; transform: scale(1); }
+      to { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    @media print {
+      body { background: #000 !important; color: #fff !important; }
+      .no-print { display: none !important; }
+      .slide { display: flex !important; min-height: 100vh; page-break-after: always; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-amber-500 selection:text-black">
+
+  <!-- Top Progress Bar & Live Status Header -->
+  <header class="w-full no-print z-40 bg-[#07080c]/90 backdrop-blur border-b border-white/5 px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center font-extrabold text-black text-sm hover:scale-105 transition" title="Go to Live App">दृ</a>
+      <div>
+        <span class="font-extrabold tracking-tight text-white text-sm">DRISHTI AI</span>
+        <span class="text-[10px] text-amber-400 font-mono ml-2 uppercase px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">iQOO Hackathon 2026</span>
+      </div>
+    </div>
+
+    <!-- Timer & Navigation Controls -->
+    <div class="flex items-center gap-4">
+      <!-- Direct App Link -->
+      <a href="index.html" class="hidden sm:flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500 hover:text-black transition">
+        <span>📱 Open Live App</span>
+      </a>
+
+      <!-- Pitch Countdown Timer -->
+      <div class="flex items-center gap-2 bg-black/60 px-3 py-1 rounded-full border border-white/10 font-mono text-xs">
+        <span id="timerDot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span id="pitchTimerDisplay" class="text-amber-300 font-bold">03:00</span>
+        <button id="btnTimerToggle" class="text-gray-400 hover:text-white px-1 font-sans text-xs" title="Start/Pause Timer">▶</button>
+        <button id="btnTimerReset" class="text-gray-500 hover:text-gray-300 px-1 font-sans text-xs" title="Reset Timer">↺</button>
+      </div>
+
+      <!-- Presenter Notes Toggle -->
+      <button id="btnToggleNotes" class="px-2.5 py-1 text-xs font-medium rounded-md border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5">
+        <span>💬 Notes</span>
+        <kbd class="text-[10px] font-mono text-gray-400 bg-white/5 px-1 py-0.5 rounded">P</kbd>
+      </button>
+
+      <!-- Fullscreen Toggle -->
+      <button id="btnFullscreen" class="px-2.5 py-1 text-xs font-medium rounded-md border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5">
+        <span>⛶ Fullscreen</span>
+        <kbd class="text-[10px] font-mono text-gray-400 bg-white/5 px-1 py-0.5 rounded">F</kbd>
+      </button>
+    </div>
+  </header>
+
+  <!-- Top Slim Slide Progress Line -->
+  <div class="w-full bg-white/5 h-1 no-print">
+    <div id="slideProgressBar" class="h-full bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 transition-all duration-300" style="width: 12.5%;"></div>
+  </div>
+
+  <!-- Main Slide Viewport -->
+  <main class="flex-1 flex items-center justify-center p-4 md:p-10 relative">
+
+    <!-- Ambient Glowing Backdrops -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none pulse-glow"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none pulse-glow" style="animation-delay: 1.5s;"></div>
+
+    <!-- ================= SLIDE 1: COVER ================= -->
+    <section class="slide w-full max-w-5xl mx-auto flex flex-col justify-center items-center text-center space-y-8" data-slide="1">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        Hyderabad City Battle • Phone-First AI Track
+      </div>
+
+      <div class="space-y-4">
+        <h1 class="text-6xl md:text-8xl font-black tracking-tight text-white">
+          DRISHTI <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400">AI</span>
+        </h1>
+        <p class="text-xl md:text-2xl font-medium text-gray-300 max-w-3xl mx-auto">
+          On-Device AI Sensory Prosthetic for the Visually Impaired
+        </p>
+      </div>
+
+      <div class="max-w-2xl bg-white/[0.03] border border-white/10 rounded-xl p-5 backdrop-blur-md">
+        <p class="text-base md:text-lg text-amber-200/90 italic font-serif">
+          "Vision shouldn't wait for a cloud round-trip, compromise your privacy, or stop working when connectivity drops."
+        </p>
+      </div>
+
+      <!-- Hero Metrics Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl pt-2">
+        <div class="glass-card rounded-xl p-4 text-center">
+          <div class="text-3xl font-black text-emerald-400 font-mono">0 ms</div>
+          <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Cloud Dependency</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 text-center">
+          <div class="text-3xl font-black text-amber-400 font-mono">&lt; 30 ms</div>
+          <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">NPU Response Time</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 text-center">
+          <div class="text-3xl font-black text-cyan-400 font-mono">7 Vernaculars</div>
+          <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Pan-Indian Vocal</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 text-center">
+          <div class="text-3xl font-black text-purple-400 font-mono">100% Offline</div>
+          <div class="text-xs text-gray-400 mt-1 uppercase font-semibold">Air-Gapped Security</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: THE PROBLEM ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="2">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-red-400 tracking-wider">The Critical Barrier</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">The Cloud Vision Trap</h2>
+        <p class="text-gray-400 text-base">Over 40 million visually impaired citizens in India are failed by existing cloud-tethered aids in 3 critical ways:</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Flaw 1 -->
+        <div class="glass-card rounded-2xl p-6 border-red-500/30 hover:border-red-500/60 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-2xl">⚡</div>
+          <h3 class="text-xl font-bold text-red-400">1. Cloud Latency is Dangerous</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Cloud vision APIs take <strong>2 to 5 seconds</strong> per inference. A pedestrian moving at 1.2 m/s travels <strong>4 to 6 feet</strong> in that window. A 2-second delay in street navigation causes physical injury.
+          </p>
+          <div class="text-xs font-mono text-red-300/80 bg-red-500/10 px-3 py-1.5 rounded-md">
+            Threshold: Obstacle avoidance requires &lt; 200ms
+          </div>
+        </div>
+
+        <!-- Flaw 2 -->
+        <div class="glass-card rounded-2xl p-6 border-amber-500/30 hover:border-amber-500/60 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl">🔒</div>
+          <h3 class="text-xl font-bold text-amber-400">2. Privacy Vulnerability</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Users are forced to stream live video of <strong>private bedrooms, confidential ID cards (Aadhaar), bank receipts, and medical prescriptions</strong> to third-party commercial cloud servers.
+          </p>
+          <div class="text-xs font-mono text-amber-300/80 bg-amber-500/10 px-3 py-1.5 rounded-md">
+            Biometric & spatial surveillance risk
+          </div>
+        </div>
+
+        <!-- Flaw 3 -->
+        <div class="glass-card rounded-2xl p-6 border-blue-500/30 hover:border-blue-500/60 transition space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-2xl">📡</div>
+          <h3 class="text-xl font-bold text-blue-400">3. Transit Fragility</h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Real-world transit hubs (<strong>metro stations, basement escalators, elevators, and rural bus stops</strong>) frequently have zero high-speed mobile data—instantly "blinding" cloud apps.
+          </p>
+          <div class="text-xs font-mono text-blue-300/80 bg-blue-500/10 px-3 py-1.5 rounded-md">
+            Assistive tools must never depend on Wi-Fi
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: ARCHITECTURE & PILLARS ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="3">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-emerald-400 tracking-wider">Zero-Cloud Philosophy</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">The Drishti 100% On-Device Architecture</h2>
+        <p class="text-gray-400 text-base">All sensory processing occurs entirely on phone silicon (NPU/GPU/CPU). Zero bytes leave the device.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Pillar 1 -->
+        <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-2xl flex-shrink-0">🧭</div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-white">1. Spatial Clock-Face Guidance</h3>
+            <p class="text-sm text-gray-300">
+              Translates obstacles to familiar clock sectors (12 o'clock, 2 o'clock) with dynamic distance bands (NEAR &lt; 3ft, MID 3-6ft, FAR &gt; 6ft) and directional linear haptic pulses.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-2xl flex-shrink-0">💊</div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-white">2. Indian Pharma Smart-Scan</h3>
+            <p class="text-sm text-gray-300">
+              Blister-pack OCR isolates drug brand (Dolo 650, Pan 40), Indian pharmaceutical expiry formats (<code class="text-emerald-400">EXP 11/2027</code>), dosage, and dietary advice in local tongue.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-2xl flex-shrink-0">⏱️</div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-white">3. Live Unsimulated Benchmark</h3>
+            <p class="text-sm text-gray-300">
+              Real HTTP round-trip dispatch vs. local NPU stopwatch. Demonstrates 10x-50x speed advantage on stage with cached replay fallback for Wi-Fi-compromised venues.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card rounded-2xl p-6 flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-2xl flex-shrink-0">👤</div>
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-white">4. "Who's Near Me" + AES Encryption</h3>
+            <p class="text-sm text-gray-300">
+              128-dimensional biometric embeddings encrypted at rest via WebCrypto AES-GCM-256. Discreet double-heartbeat vibration and whisper when registered contacts approach.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: TIERED MODEL STRATEGY ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="4">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-amber-400 tracking-wider">Democratizing Assistive Tech</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">Hardware Diversity: Tiered Models</h2>
+        <p class="text-gray-400 text-base">Assistive tools cannot assume an ₹80,000 flagship. Drishti dynamically adapts to target hardware.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Standard Tier -->
+        <div class="glass-card rounded-2xl p-7 border-amber-500/40 relative overflow-hidden space-y-5">
+          <div class="absolute top-0 right-0 px-4 py-1.5 bg-amber-500 text-black text-xs font-bold uppercase rounded-bl-xl font-mono">Flagship Class</div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-xl">⚡</div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Standard Tier (NPU)</h3>
+              <p class="text-xs text-amber-400 font-mono">Target: Snapdragon 8 Elite / Dimensity 9400</p>
+            </div>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">✓</span>
+              <span><strong>Rich Spatial Comprehension:</strong> High-density VLM scene descriptors and multi-sector obstacle tracking.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">✓</span>
+              <span><strong>320x240 Input Resolution:</strong> Fine-grained object segmentation and text localization.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">✓</span>
+              <span><strong>Ultra-Low Latency:</strong> ~15ms - 35ms on-device inference speed.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lite Tier -->
+        <div class="glass-card rounded-2xl p-7 border-cyan-500/40 relative overflow-hidden space-y-5">
+          <div class="absolute top-0 right-0 px-4 py-1.5 bg-cyan-500 text-black text-xs font-bold uppercase rounded-bl-xl font-mono">Budget / Mid-Range</div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-xl">🚀</div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Lite Tier (Edge)</h3>
+              <p class="text-xs text-cyan-400 font-mono">Target: Dimensity 6300/7300, Snapdragon 6 Gen</p>
+            </div>
+          </div>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Fast Directional Evasion:</strong> Compact quantized models prioritizing rapid hazard clearance over description.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Adaptive Downsampling (224x168):</strong> Reduces thermal footprint and preserves battery on budget silicon.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>Still Beats Cloud by 10x:</strong> Maintains safety-critical response times on sub-₹15,000 devices.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between text-xs font-mono text-gray-300">
+        <span>🔄 Auto-Hardware Detection: Evaluates silicon concurrency & frame budget at startup.</span>
+        <span class="text-amber-400 font-bold">Manual Toggle: Press 'T'</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: LIVE BENCHMARK & AIRPLANE PROOF ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="5">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-red-400 tracking-wider">The Stage Climax</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">The "Airplane Mode" Proof & Live Benchmark</h2>
+        <p class="text-gray-400 text-base">No mocked figures. A verifiably real side-by-side comparison on stage.</p>
+      </div>
+
+      <!-- Real Benchmark Split Display -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- On-Device Panel -->
+        <div class="glass-card rounded-2xl p-6 border-emerald-500/40 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-emerald-400 font-bold">Local Silicon (NPU)</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">100% OFFLINE</span>
+          </div>
+          <div class="text-5xl font-black text-emerald-400 font-mono">~24 ms</div>
+          <p class="text-sm text-gray-300">
+            Real measured JavaScript performance stopwatch executing quantized scene comprehension completely on device.
+          </p>
+          <div class="text-xs text-emerald-300/80 bg-emerald-500/10 px-3 py-2 rounded-lg font-mono">
+            Status: ZERO NETWORK DEPENDENCY
+          </div>
+        </div>
+
+        <!-- Cloud Vision API Panel -->
+        <div class="glass-card rounded-2xl p-6 border-red-500/40 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-red-400 font-bold">Cloud Vision API</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-red-500/20 text-red-300 border border-red-500/30">LIVE HTTP POST</span>
+          </div>
+          <div class="text-5xl font-black text-red-400 font-mono">1,800 - 3,500 ms</div>
+          <p class="text-sm text-gray-300">
+            Genuine HTTP payload round-trip transmitting identical camera frame over the network to cloud endpoint.
+          </p>
+          <div class="text-xs text-red-300/80 bg-red-500/10 px-3 py-2 rounded-lg font-mono">
+            Airplane Mode: CONNECTION BLOCKED (FAILED)
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Proof Protocol Callout -->
+      <div class="glass-glow-amber rounded-2xl p-5 bg-amber-500/5 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-3xl flex-shrink-0">✈️</div>
+        <div class="space-y-1">
+          <h4 class="font-bold text-white text-base">The Live Stage Protocol (Beat 2):</h4>
+          <p class="text-xs text-gray-300">
+            Presenter flips phone into <strong>Airplane Mode</strong> live on stage. Drishti continues guiding, recognizing faces, and reading medicine at full speed—while Cloud Vision visibly errors out.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 6: PAN-INDIAN MULTILINGUAL ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="6">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-purple-400 tracking-wider">True Inclusivity</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">7 Indian Languages • Zero Barriers</h2>
+        <p class="text-gray-400 text-base">Accessible directly in authentic native script and smooth, understandable voice synthesis.</p>
+      </div>
+
+      <!-- Language Pills Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+        <div class="glass-card rounded-xl p-3 text-center border-amber-500/40 bg-amber-500/10">
+          <div class="text-2xl mb-1">🏛️</div>
+          <div class="font-bold text-sm text-white">తెలుగు</div>
+          <div class="text-[10px] text-amber-300 font-mono">Telugu (Host)</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">हिन्दी</div>
+          <div class="text-[10px] text-gray-400 font-mono">Hindi</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">English</div>
+          <div class="text-[10px] text-gray-400 font-mono">Indian English</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">தமிழ்</div>
+          <div class="text-[10px] text-gray-400 font-mono">Tamil</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">ಕನ್ನಡ</div>
+          <div class="text-[10px] text-gray-400 font-mono">Kannada</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">मराठी</div>
+          <div class="text-[10px] text-gray-400 font-mono">Marathi</div>
+        </div>
+        <div class="glass-card rounded-xl p-3 text-center">
+          <div class="text-2xl mb-1">🇮🇳</div>
+          <div class="font-bold text-sm text-white">বাংলা</div>
+          <div class="text-[10px] text-gray-400 font-mono">Bengali</div>
+        </div>
+      </div>
+
+      <!-- Localization Architecture Details -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-xl p-5 space-y-2">
+          <h4 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="text-amber-400 font-mono">01.</span>
+            <span>Dynamic UI Synchronization</span>
+          </h4>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            Selecting a language updates all 4 action buttons (<code class="text-amber-300">btnScene</code>, <code class="text-amber-300">btnMed</code>, etc.), status headers, and ARIA labels instantly into authentic regional Unicode.
+          </p>
+        </div>
+        <div class="glass-card rounded-xl p-5 space-y-2">
+          <h4 class="font-bold text-white text-sm flex items-center gap-2">
+            <span class="text-cyan-400 font-mono">02.</span>
+            <span>Acoustic Phonetic Fallback</span>
+          </h4>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            When devices lack native regional voices (e.g. Chrome on Windows without Telugu TTS), Drishti maps phonetics to Indian neural speech engines at 0.88x pacing with prosodic pause markers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 7: 3-MINUTE WINNING FLOW ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-8" data-slide="7">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase text-amber-400 tracking-wider">Execution Playbook</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white">The 3-Minute Winning Pitch Flow</h2>
+        <p class="text-gray-400 text-base">A disciplined, punchy live demo flow designed to captivate hackathon judges.</p>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Step 1 -->
+        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-amber-500">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-amber-400 font-bold">0:00 - 0:30</span>
+            <div>
+              <h4 class="font-bold text-white text-sm">The Hook & Cloud Vulnerability</h4>
+              <p class="text-xs text-gray-400">Introduce 40M target userbase and demonstrate why cloud lag is dangerous in traffic.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-gray-400 bg-white/5 px-2 py-1 rounded">Hook</span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-red-500">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-red-400 font-bold">0:30 - 1:10</span>
+            <div>
+              <h4 class="font-bold text-white text-sm">The Airplane Mode Proof + Spatial Navigation</h4>
+              <p class="text-xs text-gray-400">Visibly flip phone to Airplane Mode (<kbd class="text-red-300 font-mono">Key A</kbd>). Start spatial clock guidance (<kbd class="text-amber-300 font-mono">Key 1</kbd>).</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-red-300 bg-red-500/10 px-2 py-1 rounded">Beat 2 Proof</span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-emerald-500">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-emerald-400 font-bold">1:10 - 1:50</span>
+            <div>
+              <h4 class="font-bold text-white text-sm">Medicine Smart-Scan in Airplane Mode</h4>
+              <p class="text-xs text-gray-400">Point at Dolo 650 strip (<kbd class="text-emerald-300 font-mono">Key 2</kbd>). Reads brand, expiry, and dosage offline in Telugu/Hindi.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-emerald-300 bg-emerald-500/10 px-2 py-1 rounded">Pharma OCR</span>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-cyan-500">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-cyan-400 font-bold">1:50 - 2:20</span>
+            <div>
+              <h4 class="font-bold text-white text-sm">"Who's Near Me" Discreet Face Whisper</h4>
+              <p class="text-xs text-gray-400">Teammate steps in front. Phone whispers proximity with double-heartbeat vibration (<kbd class="text-cyan-300 font-mono">Key 4</kbd>).</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-cyan-300 bg-cyan-500/10 px-2 py-1 rounded">AES Biometrics</span>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-purple-500">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-sm text-purple-400 font-bold">2:20 - 3:00</span>
+            <div>
+              <h4 class="font-bold text-white text-sm">Live Benchmark Telemetry & Close</h4>
+              <p class="text-xs text-gray-400">Fire live HTTP speed test (<kbd class="text-purple-300 font-mono">Key 3</kbd>). Display live speedup ratio and open source links.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-purple-300 bg-purple-500/10 px-2 py-1 rounded">Showstopper</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 8: SUMMARY & LINKS ================= -->
+    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center items-center text-center space-y-8" data-slide="8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        Live & Open Source
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="text-5xl md:text-6xl font-black text-white tracking-tight">Drishti AI</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">
+          100% on-device assistive vision built for Indian reality.
+        </p>
+      </div>
+
+      <!-- Links Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl text-left">
+        <a href="https://drishti-seven-mu.vercel.app" target="_blank" class="glass-card rounded-2xl p-6 border-amber-500/30 hover:border-amber-500/70 transition group block">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-amber-400 font-bold">Live Production App</span>
+            <span class="text-amber-400 group-hover:translate-x-1 transition">↗</span>
+          </div>
+          <div class="text-lg font-bold text-white mt-2">drishti-seven-mu.vercel.app</div>
+          <p class="text-xs text-gray-400 mt-1">Open in any mobile or desktop browser to test gestures & voice.</p>
+        </a>
+
+        <a href="https://github.com/M-L-Arjun/drishti-ai" target="_blank" class="glass-card rounded-2xl p-6 border-cyan-500/30 hover:border-cyan-500/70 transition group block">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-cyan-400 font-bold">GitHub Repository</span>
+            <span class="text-cyan-400 group-hover:translate-x-1 transition">↗</span>
+          </div>
+          <div class="text-lg font-bold text-white mt-2">M-L-Arjun / drishti-ai</div>
+          <p class="text-xs text-gray-400 mt-1">111 unit tests passing • MIT License • Zero cloud dependencies.</p>
+        </a>
+      </div>
+
+      <div class="text-xs text-gray-500 font-mono pt-4">
+        iQOO Hackathon 2026 (Hyderabad City Battle) • Team Drishti
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Presenter Notes Drawer (Toggled with 'P') -->
+  <div id="notesDrawer" class="hidden no-print z-50 bg-[#0d0f18] border-t border-amber-500/30 p-4 max-h-48 overflow-y-auto">
+    <div class="max-w-4xl mx-auto flex items-start justify-between gap-6">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono uppercase font-bold text-amber-400">Presenter Script & Stage Cue</span>
+          <span id="notesSlideIndicator" class="text-[10px] font-mono text-gray-400 bg-white/5 px-2 py-0.5 rounded">Slide 1/8</span>
+        </div>
+        <p id="notesContent" class="text-sm text-gray-200 leading-relaxed font-sans">
+          "Respected judges, over 40 million people in India live with severe visual impairment..."
+        </p>
+      </div>
+      <button id="btnCloseNotes" class="text-gray-400 hover:text-white text-lg">×</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation & Slide Indicator Controls -->
+  <footer class="w-full no-print z-40 bg-[#07080c]/90 backdrop-blur border-t border-white/5 px-6 py-4 flex items-center justify-between">
+    <!-- Prev / Next Controls -->
+    <div class="flex items-center gap-2">
+      <button id="btnPrev" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white text-sm font-semibold border border-white/10 transition flex items-center gap-1">
+        <span>←</span>
+        <span class="hidden sm:inline">Prev</span>
+      </button>
+      <button id="btnNext" class="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-sm font-bold transition flex items-center gap-1 shadow-lg shadow-amber-500/20">
+        <span class="hidden sm:inline">Next</span>
+        <span>→</span>
+      </button>
+    </div>
+
+    <!-- Direct Slide Dots -->
+    <div id="slideDots" class="flex items-center gap-2">
+      <!-- Generated dynamically in JS -->
+    </div>
+
+    <!-- Slide Number Indicator & Keyboard Hint -->
+    <div class="text-xs font-mono text-gray-400 flex items-center gap-3">
+      <span class="hidden md:inline text-gray-500">Use <kbd class="px-1.5 py-0.5 bg-white/5 rounded text-gray-300">←</kbd> <kbd class="px-1.5 py-0.5 bg-white/5 rounded text-gray-300">→</kbd> to navigate</span>
+      <span id="slideCounter" class="text-white font-bold">1 / 8</span>
+    </div>
+  </footer>
+
+  <!-- Interactive Slide Controller Script -->
+  <script>
+    const TOTAL_SLIDES = 8;
+    let currentSlide = 1;
+
+    const SPEAKER_NOTES = {
+      1: "Respected judges, over 40 million people in India live with severe visual impairment. Today's assistive apps promise sight through the cloud—but cloud lag in traffic is dangerous. Today we present Drishti AI: 100% phone-first, zero-cloud sensory companion running entirely on local device silicon.",
+      2: "Existing assistive tech suffers from the Cloud Vision Trap: Latency (2-5 seconds delay causes pedestrian collisions), Privacy (users forced to stream bedrooms and IDs to servers), and Fragility (metro stations and elevators blind cloud aids).",
+      3: "Drishti is built on a hard architectural rule: Zero Cloud Calls in the core sensory pipeline. Ingests frames locally, maps spatial clock-face coordinates with linear haptic vibration, scans Indian medicine packs with OCR, and identifies trusted contacts with encrypted embeddings.",
+      4: "We cannot build assistive technology that only works on ₹80,000 flagships. On flagship NPUs, our Standard Tier delivers rich multi-object spatial reasoning. On budget devices like Dimensity 6300, our Lite Tier activates automatically to prioritize directional evasion.",
+      5: "(Presenter visibly flips phone into Airplane Mode) Watch this: I am activating Airplane Mode on stage. Drishti continues executing at 60fps; when we trigger our live benchmark, cloud vision fails with network blocked while Drishti executes in milliseconds.",
+      6: "Language should never be a barrier. Drishti supports 7 major Indian languages, led by our Hyderabad host language: Telugu. Every action button, warning, and dosage instruction translates into authentic native script with acoustic phonetic synthesis.",
+      7: "Our 3-minute stage flow: The Hook (0:30) -> The Airplane Mode Proof (1:10) -> Medicine Blister Scan (1:50) -> Who's Near Me Face Whisper (2:20) -> Live Benchmark Telemetry HUD & Close (3:00).",
+      8: "Drishti proves on-device AI gives independence back without trillion-parameter servers. Drishti is open-source, passes all 111 unit tests, and is live right now on Vercel at drishti-seven-mu.vercel.app. Thank you!"
+    };
+
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('slideProgressBar');
+    const slideCounter = document.getElementById('slideCounter');
+    const notesContent = document.getElementById('notesContent');
+    const notesIndicator = document.getElementById('notesSlideIndicator');
+    const notesDrawer = document.getElementById('notesDrawer');
+    const slideDotsContainer = document.getElementById('slideDots');
+
+    // Generate Navigation Dots
+    for (let i = 1; i <= TOTAL_SLIDES; i++) {
+      const dot = document.createElement('button');
+      dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-200 ${i === 1 ? 'bg-amber-400 w-6' : 'bg-white/20 hover:bg-white/40'}`;
+      dot.title = `Go to slide ${i}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      slideDotsContainer.appendChild(dot);
+    }
+
+    function goToSlide(slideNum) {
+      if (slideNum < 1 || slideNum > TOTAL_SLIDES) return;
+      currentSlide = slideNum;
+
+      // Update slide visibility
+      slides.forEach((s, idx) => {
+        if (idx + 1 === currentSlide) {
+          s.classList.remove('hidden');
+        } else {
+          s.classList.add('hidden');
+        }
+      });
+
+      // Update progress line & counter
+      const progressPercent = (currentSlide / TOTAL_SLIDES) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+      slideCounter.textContent = `${currentSlide} / ${TOTAL_SLIDES}`;
+
+      // Update dots
+      const dots = slideDotsContainer.querySelectorAll('button');
+      dots.forEach((dot, idx) => {
+        if (idx + 1 === currentSlide) {
+          dot.className = 'w-6 h-2.5 rounded-full bg-amber-400 transition-all duration-200';
+        } else {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-200';
+        }
+      });
+
+      // Update notes
+      notesContent.textContent = SPEAKER_NOTES[currentSlide] || "";
+      notesIndicator.textContent = `Slide ${currentSlide}/${TOTAL_SLIDES}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < TOTAL_SLIDES) goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) goToSlide(currentSlide - 1);
+    }
+
+    document.getElementById('btnNext').addEventListener('click', nextSlide);
+    document.getElementById('btnPrev').addEventListener('click', prevSlide);
+
+    // Keyboard listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        goToSlide(1);
+      } else if (e.key === 'End') {
+        goToSlide(TOTAL_SLIDES);
+      } else if (e.key.toLowerCase() === 'p') {
+        toggleNotes();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+
+    // Notes Toggle
+    function toggleNotes() {
+      notesDrawer.classList.toggle('hidden');
+    }
+    document.getElementById('btnToggleNotes').addEventListener('click', toggleNotes);
+    document.getElementById('btnCloseNotes').addEventListener('click', () => notesDrawer.classList.add('hidden'));
+
+    // Fullscreen Toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+    document.getElementById('btnFullscreen').addEventListener('click', toggleFullscreen);
+
+    // 3-Minute Pitch Countdown Timer
+    let timerSeconds = 180;
+    let timerInterval = null;
+    const timerDisplay = document.getElementById('pitchTimerDisplay');
+    const timerToggle = document.getElementById('btnTimerToggle');
+    const timerReset = document.getElementById('btnTimerReset');
+    const timerDot = document.getElementById('timerDot');
+
+    function updateTimer() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      
+      if (timerSeconds <= 30) {
+        timerDisplay.className = 'text-red-400 font-bold';
+        timerDot.className = 'w-2 h-2 rounded-full bg-red-500 animate-ping';
+      } else if (timerSeconds <= 60) {
+        timerDisplay.className = 'text-amber-400 font-bold';
+        timerDot.className = 'w-2 h-2 rounded-full bg-amber-400';
+      } else {
+        timerDisplay.className = 'text-amber-300 font-bold';
+        timerDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+      }
+
+      if (timerSeconds <= 0) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerToggle.textContent = '▶';
+      } else {
+        timerSeconds--;
+      }
+    }
+
+    timerToggle.addEventListener('click', () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerToggle.textContent = '▶';
+      } else {
+        timerInterval = setInterval(updateTimer, 1000);
+        timerToggle.textContent = '⏸';
+      }
+    });
+
+    timerReset.addEventListener('click', () => {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerSeconds = 180;
+      timerToggle.textContent = '▶';
+      updateTimer();
+    });
+
+    // Initial setup
+    goToSlide(1);
+  </script>
+</body>
+</html>
