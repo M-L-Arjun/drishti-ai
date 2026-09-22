@@ -85,148 +85,182 @@
   <main class="flex-1 flex items-center justify-center p-4 md:p-8 relative">
 
     <!-- ================= SLIDE 1: TITLE ================= -->
-    <section class="slide w-full max-w-5xl mx-auto flex flex-col justify-center items-center text-center space-y-8" data-slide="1">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono uppercase tracking-wider">
-        <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
-        Smart Living / Accessibility Tech • iQOO Hackathon 2026 (Hyderabad)
+    <section class="slide w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-4" data-slide="1">
+      <div class="flex-1 flex flex-col items-start text-left space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+          Smart Living / Accessibility Tech • iQOO Hackathon 2026 (Hyderabad)
+        </div>
+
+        <div class="space-y-2">
+          <h1 class="text-6xl md:text-7xl font-black tracking-tight text-white">
+            Drishti
+          </h1>
+          <p class="text-lg md:text-xl font-mono text-yellow-400">
+            दृष्टि • On-Device Sensory Companion
+          </p>
+        </div>
+
+        <div class="w-full bg-white/[0.03] border border-yellow-400/30 rounded-2xl p-5 backdrop-blur-md">
+          <p class="text-lg md:text-xl text-white font-bold tracking-tight">
+            “An instant, private, offline sensory companion for the visually impaired”
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 w-full">
+          <div class="glass-card rounded-xl p-3.5 border-yellow-400/20">
+            <div class="text-xl mb-0.5">⚡</div>
+            <div class="text-sm font-bold text-white">Instant Reaction</div>
+            <div class="text-[11px] text-gray-400">Zero cloud latency lag</div>
+          </div>
+          <div class="glass-card rounded-xl p-3.5 border-yellow-400/20">
+            <div class="text-xl mb-0.5">🔒</div>
+            <div class="text-sm font-bold text-white">100% Private</div>
+            <div class="text-[11px] text-gray-400">Zero video uploads</div>
+          </div>
+          <div class="glass-card rounded-xl p-3.5 border-yellow-400/20">
+            <div class="text-xl mb-0.5">✈️</div>
+            <div class="text-sm font-bold text-white">Fully Offline</div>
+            <div class="text-[11px] text-gray-400">Works in Airplane Mode</div>
+          </div>
+          <div class="glass-card rounded-xl p-3.5 border-yellow-400/20">
+            <div class="text-xl mb-0.5">🏠</div>
+            <div class="text-sm font-bold text-white">Smart Living</div>
+            <div class="text-[11px] text-gray-400">Everyday independence</div>
+          </div>
+        </div>
       </div>
 
-      <div class="space-y-3">
-        <h1 class="text-6xl md:text-8xl font-black tracking-tight text-white">
-          Drishti
-        </h1>
-        <p class="text-lg md:text-xl font-mono text-yellow-400">
-          दृष्टि • On-Device Sensory Companion
-        </p>
-      </div>
-
-      <div class="max-w-3xl bg-white/[0.03] border border-yellow-400/30 rounded-2xl p-6 backdrop-blur-md">
-        <p class="text-xl md:text-2xl text-white font-bold tracking-tight">
-          “An instant, private, offline sensory companion for the visually impaired”
-        </p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl pt-2">
-        <div class="glass-card rounded-xl p-4 text-center border-yellow-400/20">
-          <div class="text-2xl mb-1">⚡</div>
-          <div class="text-sm font-bold text-white">Instant Reaction</div>
-          <div class="text-[11px] text-gray-400 mt-0.5">Zero cloud latency lag</div>
-        </div>
-        <div class="glass-card rounded-xl p-4 text-center border-yellow-400/20">
-          <div class="text-2xl mb-1">🔒</div>
-          <div class="text-sm font-bold text-white">100% Private</div>
-          <div class="text-[11px] text-gray-400 mt-0.5">Zero video uploads</div>
-        </div>
-        <div class="glass-card rounded-xl p-4 text-center border-yellow-400/20">
-          <div class="text-2xl mb-1">✈️</div>
-          <div class="text-sm font-bold text-white">Fully Offline</div>
-          <div class="text-[11px] text-gray-400 mt-0.5">Works in Airplane Mode</div>
-        </div>
-        <div class="glass-card rounded-xl p-4 text-center border-yellow-400/20">
-          <div class="text-2xl mb-1">🏠</div>
-          <div class="text-sm font-bold text-white">Smart Living</div>
-          <div class="text-[11px] text-gray-400 mt-0.5">Everyday independence</div>
+      <!-- Right Column: iQOO Mobile Interface Photo -->
+      <div class="w-full md:w-5/12 flex flex-col items-center">
+        <div class="relative rounded-2xl overflow-hidden border border-yellow-400/40 shadow-2xl shadow-yellow-500/10 group">
+          <img src="assets/images/iqoo-spatial-hallway.jpg" alt="iQOO On-Device Spatial Guidance Interface" class="w-full h-auto max-h-[460px] object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 text-center">
+            <span class="text-xs font-mono font-semibold text-yellow-400">📱 iQOO Flagship On-Device AI • Spatial Radar HUD</span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= SLIDE 2: THE PROBLEM ================= -->
-    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-7" data-slide="2">
+    <section class="slide hidden w-full max-w-6xl mx-auto flex flex-col justify-center space-y-6" data-slide="2">
       <div class="space-y-1">
         <span class="text-xs font-mono uppercase text-red-400 font-bold tracking-wider">The Real-World Crisis</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white">The Problem: Why Cloud Vision Fails</h2>
-        <p class="text-gray-300 text-sm">Over <strong class="text-yellow-400">40 million people</strong> in India live with severe visual impairment. Existing assistive tech fails them in 3 critical ways:</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white">The Problem: Why Existing Assistive Tech Fails</h2>
+        <p class="text-gray-300 text-sm">Over <strong class="text-yellow-400">40 million people</strong> in India live with severe visual impairment. Cloud-dependent aids fail them in 3 critical ways:</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <!-- Flaw 1 -->
-        <div class="glass-card rounded-2xl p-6 border-red-500/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-xl">⚠️</div>
-          <h3 class="text-lg font-bold text-red-400">a. Cloud Latency is Dangerous</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            Cloud vision APIs take <strong>2 to 5 seconds</strong>. A pedestrian moving at 1.2 m/s travels <strong>4 to 6 feet</strong> during that delay. In obstacle avoidance, that delay causes physical collisions and injury.
-          </p>
-          <div class="text-[11px] font-mono text-red-300 bg-red-500/10 px-2.5 py-1 rounded">
-            Obstacles demand instant sub-second response
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+        <!-- Left: Image Card -->
+        <div class="md:col-span-4 rounded-2xl overflow-hidden glass-card border border-white/10 flex flex-col justify-between">
+          <img src="assets/images/visually-impaired-nav.jpg" alt="Visually Impaired Navigation" class="w-full h-56 md:h-64 object-cover">
+          <div class="p-4 space-y-1.5 bg-black/40">
+            <div class="text-xs font-mono text-yellow-400 font-bold">40M+ In India</div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Navigating crowded urban transit requires sub-second sensory feedback. A 2-second cloud vision delay causes physical injury.
+            </p>
           </div>
         </div>
 
-        <!-- Flaw 2 -->
-        <div class="glass-card rounded-2xl p-6 border-yellow-400/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center text-xl">🔒</div>
-          <h3 class="text-lg font-bold text-yellow-400">b. Privacy Vulnerability</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            Users are forced to upload live camera feeds of private bedrooms, bathrooms, ID cards (Aadhaar), and sensitive prescriptions to commercial third-party cloud servers.
-          </p>
-          <div class="text-[11px] font-mono text-yellow-300 bg-yellow-400/10 px-2.5 py-1 rounded">
-            Severe surveillance & biometric data exposure
+        <!-- Right: 3 Failure Cards -->
+        <div class="md:col-span-8 flex flex-col justify-between gap-3">
+          <!-- Flaw 1 -->
+          <div class="glass-card rounded-xl p-4 border-l-4 border-l-red-500 border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">⚠️</span>
+              <h3 class="text-sm font-bold text-red-400">a. Cloud Latency is Dangerous</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Cloud vision APIs take <strong>2 to 5 seconds</strong>. A pedestrian moving at 1.2 m/s travels <strong>4 to 6 feet</strong> during that delay window, causing direct collisions with obstacles and drop-offs.
+            </p>
           </div>
-        </div>
 
-        <!-- Flaw 3 -->
-        <div class="glass-card rounded-2xl p-6 border-cyan-400/40 space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center text-xl">📡</div>
-          <h3 class="text-lg font-bold text-cyan-400">c. Connectivity Fragility</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            Metro basements, rural transit zones, elevators, and stairwells frequently lack high-speed internet. When connection drops, cloud-dependent apps instantly disable and blind the user.
-          </p>
-          <div class="text-[11px] font-mono text-cyan-300 bg-cyan-400/10 px-2.5 py-1 rounded">
-            Assistive tools must never depend on Wi-Fi
+          <!-- Flaw 2 -->
+          <div class="glass-card rounded-xl p-4 border-l-4 border-l-yellow-400 border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🔒</span>
+              <h3 class="text-sm font-bold text-yellow-400">b. Privacy Vulnerability</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Users are forced to stream live video feeds of private bedrooms, bathrooms, personal ID cards (Aadhaar), and sensitive prescriptions to commercial third-party cloud servers.
+            </p>
+          </div>
+
+          <!-- Flaw 3 -->
+          <div class="glass-card rounded-xl p-4 border-l-4 border-l-cyan-400 border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📡</span>
+              <h3 class="text-sm font-bold text-cyan-400">c. Connectivity Fragility</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Metro basements, rural transit zones, elevators, and stairwells frequently lack high-speed internet. When connection drops, cloud-dependent apps instantly disable and leave the user stranded.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ================= SLIDE 3: THE SOLUTION ================= -->
-    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-7" data-slide="3">
+    <section class="slide hidden w-full max-w-6xl mx-auto flex flex-col justify-center space-y-6" data-slide="3">
       <div class="space-y-1">
         <span class="text-xs font-mono uppercase text-emerald-400 font-bold tracking-wider">Fully On-Device AI Companion</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white">The Solution — What Drishti Does</h2>
-        <p class="text-gray-300 text-sm">Runs 100% on-device on local phone silicon. Zero cloud dependencies across 4 core capabilities:</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white">The Solution — What Drishti Does</h2>
+        <p class="text-gray-300 text-sm">Runs 100% on-device on local phone silicon with zero cloud calls across 4 core capabilities:</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <!-- Capability a -->
-        <div class="glass-card rounded-2xl p-5 flex gap-4 items-start border-yellow-400/30">
-          <div class="w-11 h-11 rounded-xl bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center text-2xl flex-shrink-0">🧭</div>
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-white">a. Spatial & Scene Guidance</h3>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+        <!-- Left: 4 Capabilities -->
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Capability a -->
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-yellow-400/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center text-xl flex-shrink-0">🧭</div>
+              <h3 class="text-sm font-bold text-white">a. Spatial & Scene Guidance</h3>
+            </div>
             <p class="text-xs text-gray-300 leading-relaxed">
-              Real-time obstacle narration via on-device vision model mapped to 12 clock-face sectors (e.g. <em>"Obstacle at 2 o'clock, 3 ft"</em>) paired with directional linear haptics.
+              Real-time obstacle narration via quantized vision model mapped to 12 clock-face sectors (e.g. <em>"Obstacle at 2 o'clock, 3 ft"</em>) with directional linear haptics.
             </p>
           </div>
-        </div>
 
-        <!-- Capability b -->
-        <div class="glass-card rounded-2xl p-5 flex gap-4 items-start border-emerald-400/30">
-          <div class="w-11 h-11 rounded-xl bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center text-2xl flex-shrink-0">💊</div>
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-white">b. Smart-Scan for Medicine & Packaging</h3>
+          <!-- Capability b -->
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-emerald-400/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center text-xl flex-shrink-0">💊</div>
+              <h3 class="text-sm font-bold text-white">b. Smart-Scan for Medicine</h3>
+            </div>
             <p class="text-xs text-gray-300 leading-relaxed">
-              On-device OCR + local LLM filters noisy blister packs into just 3 critical data points: <strong>Drug Name, Dosage, and Expiry Date</strong>, with clear intake instructions.
+              On-device OCR + local LLM filters noisy blister packs into just 3 critical data points: <strong>Drug Name, Dosage, and Expiry Date</strong>, with spoken instructions.
             </p>
           </div>
-        </div>
 
-        <!-- Capability c -->
-        <div class="glass-card rounded-2xl p-5 flex gap-4 items-start border-cyan-400/30">
-          <div class="w-11 h-11 rounded-xl bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center text-2xl flex-shrink-0">👤</div>
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-white">c. "Who's Near Me" Contact Recognition</h3>
+          <!-- Capability c -->
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-cyan-400/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center text-xl flex-shrink-0">👤</div>
+              <h3 class="text-sm font-bold text-white">c. "Who's Near Me" Contact Scan</h3>
+            </div>
             <p class="text-xs text-gray-300 leading-relaxed">
               On-device face recognition of trusted contacts with <strong>zero cloud upload</strong>. Discreet double-heartbeat vibration and whispered name when friends approach.
             </p>
           </div>
+
+          <!-- Capability d -->
+          <div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-purple-400/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-9 h-9 rounded-lg bg-purple-400/15 border border-purple-400/30 flex items-center justify-center text-xl flex-shrink-0">📳</div>
+              <h3 class="text-sm font-bold text-white">d. Pure Tactile & Voice UX</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Eyes-free design with high-contrast OLED fallback, spatial audio in 7 Indian languages, and proximity vibration pulses that guide hands directly to targets.
+            </p>
+          </div>
         </div>
 
-        <!-- Capability d -->
-        <div class="glass-card rounded-2xl p-5 flex gap-4 items-start border-purple-400/30">
-          <div class="w-11 h-11 rounded-xl bg-purple-400/15 border border-purple-400/30 flex items-center justify-center text-2xl flex-shrink-0">🎧</div>
-          <div class="space-y-1">
-            <h3 class="text-base font-bold text-white">d. Pure Tactile & Voice UX</h3>
-            <p class="text-xs text-gray-300 leading-relaxed">
-              Eyes-free by design — <strong>no screen dependency anywhere</strong>. Intuitive multi-sensory back-taps, double-taps, directional haptics, and natural audio guidance.
-            </p>
+        <!-- Right: iQOO Medicine Scanner Image -->
+        <div class="md:col-span-4 rounded-2xl overflow-hidden glass-card border border-yellow-400/30 flex flex-col justify-between">
+          <img src="assets/images/iqoo-interface-medicine.jpg" alt="Drishti on iQOO" class="w-full h-auto max-h-[300px] object-cover">
+          <div class="p-3 bg-black/60 text-center">
+            <span class="text-[11px] font-mono font-semibold text-yellow-400">Drishti on iQOO • On-Device Medicine Scanner & Spatial Radar</span>
           </div>
         </div>
       </div>
@@ -330,129 +364,173 @@
     </section>
 
     <!-- ================= SLIDE 6: LIVE DEMO FLOW ================= -->
-    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-7" data-slide="6">
+    <section class="slide hidden w-full max-w-6xl mx-auto flex flex-col justify-center space-y-6" data-slide="6">
       <div class="space-y-1">
         <span class="text-xs font-mono uppercase text-amber-400 font-bold tracking-wider">Demo Playbook</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white">Live Demo Flow (3-Minute Script)</h2>
+        <h2 class="text-3xl md:text-5xl font-black text-white">Live Demo Flow (3-Minute Script)</h2>
         <p class="text-gray-300 text-sm">Chronological live demonstration sequence matching the onstage pitch:</p>
       </div>
 
-      <div class="space-y-3">
-        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-yellow-400">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-sm text-yellow-400 font-bold">1</span>
-            <div>
-              <h4 class="font-bold text-white text-sm">Eyes-Free Navigation Demo</h4>
-              <p class="text-xs text-gray-400">Blindfolded walk-through using clock-face spatial guidance + directional haptic pulses.</p>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+        <!-- Left: 5 Demo Steps -->
+        <div class="md:col-span-8 space-y-2.5">
+          <div class="glass-card rounded-xl p-3 flex items-center justify-between border-l-4 border-l-yellow-400">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-yellow-400 font-bold bg-yellow-400/15 w-6 h-6 rounded flex items-center justify-center">1</span>
+              <div>
+                <h4 class="font-bold text-white text-xs">Eyes-Free Navigation Demo</h4>
+                <p class="text-[11px] text-gray-400">Blindfolded walk-through with clock-face spatial guidance + directional haptic pulses.</p>
+              </div>
             </div>
+            <span class="text-[10px] font-mono text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded">Key [1]</span>
           </div>
-          <span class="text-xs font-mono text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded">Key [1] / Double-Tap</span>
+
+          <div class="glass-card rounded-xl p-3 flex items-center justify-between border-l-4 border-l-red-400">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-red-400 font-bold bg-red-400/15 w-6 h-6 rounded flex items-center justify-center">2</span>
+              <div>
+                <h4 class="font-bold text-white text-xs">Airplane Mode Proof</h4>
+                <p class="text-[11px] text-gray-400">Wi-Fi/cellular disabled live on stage; HUD verifies air-gapped offline state.</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-red-400 bg-red-400/10 px-2 py-0.5 rounded">Key [A]</span>
+          </div>
+
+          <div class="glass-card rounded-xl p-3 flex items-center justify-between border-l-4 border-l-emerald-400">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-emerald-400 font-bold bg-emerald-400/15 w-6 h-6 rounded flex items-center justify-center">3</span>
+              <div>
+                <h4 class="font-bold text-white text-xs">Medicine Label Smart-Scan</h4>
+                <p class="text-[11px] text-gray-400">Scans noisy Dolo 650 blister strip; vocalizes brand name, expiry, and dosage.</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">Key [2]</span>
+          </div>
+
+          <div class="glass-card rounded-xl p-3 flex items-center justify-between border-l-4 border-l-cyan-400">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-cyan-400 font-bold bg-cyan-400/15 w-6 h-6 rounded flex items-center justify-center">4</span>
+              <div>
+                <h4 class="font-bold text-white text-xs">"Who's Near Me" Contact Recognition</h4>
+                <p class="text-[11px] text-gray-400">Teammate steps into frame; phone triggers heartbeat vibration and whispers contact name.</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded">Key [4]</span>
+          </div>
+
+          <div class="glass-card rounded-xl p-3 flex items-center justify-between border-l-4 border-l-purple-400">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-purple-400 font-bold bg-purple-400/15 w-6 h-6 rounded flex items-center justify-center">5</span>
+              <div>
+                <h4 class="font-bold text-white text-xs">Live Latency Benchmark</h4>
+                <p class="text-[11px] text-gray-400">Real cloud API call vs local stopwatch; demonstrates local speed superiority live.</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono text-purple-400 bg-purple-400/10 px-2 py-0.5 rounded">Key [3] / [B]</span>
+          </div>
         </div>
 
-        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-red-400">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-sm text-red-400 font-bold">2</span>
-            <div>
-              <h4 class="font-bold text-white text-sm">Airplane Mode Proof</h4>
-              <p class="text-xs text-gray-400">Wi-Fi and cellular switched off live on stage; HUD verifies air-gapped offline state.</p>
-            </div>
+        <!-- Right: iQOO Hallway Interface Photo -->
+        <div class="md:col-span-4 rounded-2xl overflow-hidden glass-card border border-yellow-400/30 flex flex-col justify-between">
+          <img src="assets/images/iqoo-spatial-hallway.jpg" alt="iQOO Hallway HUD" class="w-full h-auto max-h-[310px] object-cover">
+          <div class="p-2.5 bg-black/70 text-center">
+            <span class="text-[11px] font-mono font-semibold text-yellow-400">iQOO Spatial Guidance • Hallway Obstacle HUD</span>
           </div>
-          <span class="text-xs font-mono text-red-400 bg-red-400/10 px-2 py-1 rounded">Key [A] (Airplane Proof)</span>
-        </div>
-
-        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-emerald-400">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-sm text-emerald-400 font-bold">3</span>
-            <div>
-              <h4 class="font-bold text-white text-sm">Medicine Label Smart-Scan</h4>
-              <p class="text-xs text-gray-400">Scans noisy Dolo 650 blister strip in Airplane Mode; vocalizes brand, expiry, and dosage.</p>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">Key [2] / Swipe Up</span>
-        </div>
-
-        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-cyan-400">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-sm text-cyan-400 font-bold">4</span>
-            <div>
-              <h4 class="font-bold text-white text-sm">"Who's Near Me" Contact Recognition</h4>
-              <p class="text-xs text-gray-400">Teammate steps into frame; phone triggers double-heartbeat vibration and whispers name.</p>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded">Key [4] / Swipe Right</span>
-        </div>
-
-        <div class="glass-card rounded-xl p-4 flex items-center justify-between border-l-4 border-l-purple-400">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-sm text-purple-400 font-bold">5</span>
-            <div>
-              <h4 class="font-bold text-white text-sm">Live On-Device vs. Cloud Latency Benchmark</h4>
-              <p class="text-xs text-gray-400">Real cloud API call vs. local NPU stopwatch; proves local execution is an order of magnitude faster.</p>
-            </div>
-          </div>
-          <span class="text-xs font-mono text-purple-400 bg-purple-400/10 px-2 py-1 rounded">Key [3] / Key [B]</span>
         </div>
       </div>
     </section>
 
     <!-- ================= SLIDE 7: IMPACT & WHY IT MATTERS ================= -->
-    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center space-y-7" data-slide="7">
+    <section class="slide hidden w-full max-w-6xl mx-auto flex flex-col justify-center space-y-6" data-slide="7">
       <div class="space-y-1">
         <span class="text-xs font-mono uppercase text-emerald-400 font-bold tracking-wider">Human Impact</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white">Impact & Why It Matters</h2>
-        <p class="text-gray-300 text-sm">Restoring autonomy, dignity, and safety across all socioeconomic strata:</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white">Impact & Why It Matters: Smart Living</h2>
+        <p class="text-gray-300 text-sm">Restoring autonomy, safety, and personal dignity across all socioeconomic strata:</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="glass-card rounded-2xl p-6 border-yellow-400/30 space-y-3">
-          <div class="text-2xl">🌟</div>
-          <h3 class="text-lg font-bold text-yellow-400">Real Everyday Independence</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            Empowers users in daily essential tasks: navigating streets safely, reading medicines without sighted help, and discreetly recognizing trusted friends.
-          </p>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+        <!-- Left: Elderly grandmother scanning medicine photo -->
+        <div class="md:col-span-4 rounded-2xl overflow-hidden glass-card border border-white/10 flex flex-col justify-between">
+          <img src="assets/images/elderly-medicine-scan.jpg" alt="Elderly Person Scanning Medicine" class="w-full h-56 md:h-64 object-cover">
+          <div class="p-4 space-y-1.5 bg-black/40">
+            <div class="text-xs font-mono text-emerald-400 font-bold">Daily Independence for All Ages</div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Enabling elderly and visually impaired users to verify medicine dosages, food packaging, and transit signs without relying on chaperones.
+            </p>
+          </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 border-cyan-400/30 space-y-3">
-          <div class="text-2xl">📱</div>
-          <h3 class="text-lg font-bold text-cyan-400">Works on Affordable Devices</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            Engineered for users who cannot afford ₹80,000 flagships. The Lite Tier brings edge AI to budget phones (MediaTek Dimensity), democratizing assistive access.
-          </p>
-        </div>
+        <!-- Right: 3 Impact Pillars -->
+        <div class="md:col-span-8 flex flex-col justify-between gap-3">
+          <div class="glass-card rounded-2xl p-4 border-yellow-400/30 space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🌟</span>
+              <h3 class="text-sm font-bold text-yellow-400">Real Everyday Independence</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Empowers users in daily essential tasks: navigating streets safely, reading medicines without sighted help, and discreetly recognizing trusted friends.
+            </p>
+          </div>
 
-        <div class="glass-card rounded-2xl p-6 border-emerald-400/30 space-y-3">
-          <div class="text-2xl">🛡️</div>
-          <h3 class="text-lg font-bold text-emerald-400">Zero Subscriptions & Zero Data Harvesting</h3>
-          <p class="text-xs text-gray-300 leading-relaxed">
-            No monthly API paywalls. No corporate surveillance of private homes. No internet dependency—a one-time, completely private, always-available tool.
-          </p>
+          <div class="glass-card rounded-2xl p-4 border-cyan-400/30 space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📱</span>
+              <h3 class="text-sm font-bold text-cyan-400">Works on Affordable Devices</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Engineered for users who cannot afford expensive flagships. The Lite Tier brings edge AI to budget phones (MediaTek Dimensity), democratizing assistive access across India.
+            </p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-4 border-emerald-400/30 space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🛡️</span>
+              <h3 class="text-sm font-bold text-emerald-400">Zero Subscriptions & Zero Data Harvesting</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              No monthly API paywalls. No corporate surveillance of private homes. No internet dependency—a one-time, completely private, always-available tool.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= SLIDE 8: CLOSING SLIDE ================= -->
-    <section class="slide hidden w-full max-w-5xl mx-auto flex flex-col justify-center items-center text-center space-y-8" data-slide="8">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono uppercase tracking-wider">
-        <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
-        Smart Living • iQOO Hackathon 2026 (Hyderabad)
+    <section class="slide hidden w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-4" data-slide="8">
+      <div class="flex-1 flex flex-col items-start text-left space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-mono uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+          Smart Living • iQOO Hackathon 2026 (Hyderabad)
+        </div>
+
+        <div class="space-y-2">
+          <h2 class="text-5xl md:text-7xl font-black text-white tracking-tight">Drishti</h2>
+          <p class="text-gray-300 text-base md:text-lg font-medium">
+            “An instant, private, offline sensory companion for the visually impaired”
+          </p>
+        </div>
+
+        <div class="w-full bg-yellow-400/10 border border-yellow-400/30 rounded-2xl p-5">
+          <p class="text-xl md:text-2xl text-yellow-300 font-bold tracking-tight">
+            “Built entirely on-device.<br>Built entirely for independence.”
+          </p>
+        </div>
+
+        <div class="text-xs text-gray-400 font-mono space-y-1">
+          <p class="text-white font-bold text-sm">Team: [Team Name / Team Members]</p>
+          <p class="text-gray-400">Live App: <a href="https://drishti-seven-mu.vercel.app" target="_blank" class="text-yellow-400 underline">drishti-seven-mu.vercel.app</a></p>
+          <p class="text-gray-400">GitHub: <a href="https://github.com/M-L-Arjun/drishti-ai" target="_blank" class="text-cyan-400 underline">github.com/M-L-Arjun/drishti-ai</a></p>
+        </div>
       </div>
 
-      <div class="space-y-3">
-        <h2 class="text-6xl md:text-7xl font-black text-white tracking-tight">Drishti</h2>
-        <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-          “An instant, private, offline sensory companion for the visually impaired”
-        </p>
-      </div>
-
-      <div class="max-w-2xl bg-yellow-400/10 border border-yellow-400/30 rounded-2xl p-6">
-        <p class="text-2xl md:text-3xl text-yellow-300 font-bold tracking-tight">
-          “Built entirely on-device. Built entirely for independence.”
-        </p>
-      </div>
-
-      <div class="text-sm text-gray-400 font-mono space-y-1">
-        <p class="text-white font-bold">Team: [Team Name / Team Members]</p>
-        <p class="text-xs text-gray-500">Live App: https://drishti-seven-mu.vercel.app • GitHub: M-L-Arjun / drishti-ai</p>
+      <!-- Right: Visually Impaired Hero Navigation Image -->
+      <div class="w-full md:w-5/12 flex flex-col items-center">
+        <div class="relative rounded-2xl overflow-hidden border border-yellow-400/40 shadow-2xl shadow-yellow-500/10 group">
+          <img src="assets/images/visually-impaired-nav.jpg" alt="Visually Impaired Everyday Autonomy" class="w-full h-auto max-h-[440px] object-cover rounded-2xl transition duration-500 group-hover:scale-105">
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-3 text-center">
+            <span class="text-xs font-mono font-semibold text-yellow-400">Smart Living • Empowering Real Independence</span>
+          </div>
+        </div>
       </div>
     </section>
 
